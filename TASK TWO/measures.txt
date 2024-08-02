@@ -1,0 +1,33 @@
+These DAX (Data Analysis Expressions) measures are used in Power BI to calculate specific metrics based on conditions applied to a dataset. Here's a brief explanation of each:
+
+### 1. **Answered**
+This measure counts the distinct number of call IDs where the call was answered. 
+- **DAX Formula**: `Calculate(distinctcount('Sheet1 (2)'[Call Id]), Filter('Sheet1 (2)','Sheet1 (2)'[Answered (Y/N)]="Y"))`
+- **Explanation**: It uses `Calculate` to apply a filter that selects only the rows where the 'Answered (Y/N)' column has the value "Y" (indicating the call was answered). Then, it counts the unique 'Call Id' entries among those rows.
+
+Code: 
+
+Answered = Calculate(distinctcount('Sheet1 (2)'[Call Id]),Filter('Sheet1 (2)','Sheet1 (2)'[Answered (Y/N)]="Y"))
+
+2. Resolved
+This measure counts the distinct number of call IDs where the call was resolved.
+
+DAX Formula: Calculate(distinctcount('Sheet1 (2)'[Call Id]), Filter('Sheet1 (2)','Sheet1 (2)'[Resolved2]="Y"))
+Explanation: Similar to the "Answered" measure, this calculation applies a filter to include only the rows where the 'Resolved2' column is "Y" (indicating the issue was resolved). It then counts the unique 'Call Id' values in these filtered rows.
+
+Code:
+
+Resolved = Calculate(distinctcount('Sheet1 (2)'[Call Id]),Filter('Sheet1 (2)','Sheet1 (2)'[Resolved2]="Y"))
+
+
+3. Target Value Satisfaction
+This appears to be a target metric for evaluating satisfaction, likely used for performance comparison.
+
+Value: 4.5
+Explanation: This is a fixed value that represents a benchmark or goal, possibly indicating the desired level of customer satisfaction or another key performance indicator. It can be used to compare actual satisfaction scores to this target to assess performance.
+
+Code :
+
+Target Value Satisfaction = 4.5
+
+These measures help in tracking and analyzing the performance of customer service operations, such as the number of calls answered, the number of issues resolved, and whether performance meets predefined satisfaction targets.
